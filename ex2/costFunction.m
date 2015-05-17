@@ -21,9 +21,9 @@ grad = zeros(size(theta));
 %
 
 
-J = (-1/m)*((y'*log(X*theta))+((1-y)'*log(1-(X*theta))));
+J = (1/m)*((-y'*log(sigmoid(X*theta)))-((1-y)'*(log(1-sigmoid(X*theta)))));
 
-grad = theta - (alpha/m)*(((1+(e.^-(X*theta)).^-1)-y)'*X)'
+grad = sum((1/m)*((sigmoid(X*theta)-y)'*X));
 
 % =============================================================
 
